@@ -21,6 +21,9 @@ public:
 	ofMesh & getUserMesh();
 	void threadedFunction();
 	
+	ofParameterGroup params;
+	ofParameterGroup getParams() { return params; }
+
 private:
 
 	ofMesh usermesh;

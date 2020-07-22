@@ -1,16 +1,28 @@
 #include "ncKinectCamera.h"
 
 void nCKinectCamera::setupGUI() {
-	gui.setup("Kinect Camera", "_settings/kinectcamera.xml");
-	gui.add(kinectcamxposin3dworld.set("x pos in 3d world", 0, -5, 5));
-	gui.add(kinectcamyposin3dworld.set("y pos in 3d world", 0, -5, 5));
-	gui.add(kinectcamzposin3dworld.set("z pos in 3d world", 0, -5, 5));
-	gui.add(kinectyawin3dworld.set("yaw in 3d world", 0, -180, 180));
-	gui.add(freezeFloorplane.set("freeze floorplane", false));
-	gui.add(drawCamera.set("draw camera", true));
-	gui.add(mapKinectto3DWorld.set("map Kinect to 3d world", true));
 
-	gui.loadFromFile("_settings/kinectcamera.xml");
+	gui.setup();
+	params.setName("Kinect Camera");
+	params.add(kinectcamxposin3dworld.set("x pos in 3d world", 0, -5, 5));
+	params.add(kinectcamyposin3dworld.set("y pos in 3d world", 0, -5, 5));
+	params.add(kinectcamzposin3dworld.set("z pos in 3d world", 0, -5, 5));
+	params.add(kinectyawin3dworld.set("yaw in 3d world", 0, -180, 180));
+	params.add(freezeFloorplane.set("freeze floorplane", false));
+	params.add(drawCamera.set("draw camera", true));
+	params.add(mapKinectto3DWorld.set("map Kinect to 3d world", true));
+	gui.add(params);
+
+	//gui.setup("Kinect Camera", "_settings/kinectcamera.xml");
+	//gui.add(kinectcamxposin3dworld.set("x pos in 3d world", 0, -5, 5));
+	//gui.add(kinectcamyposin3dworld.set("y pos in 3d world", 0, -5, 5));
+	//gui.add(kinectcamzposin3dworld.set("z pos in 3d world", 0, -5, 5));
+	//gui.add(kinectyawin3dworld.set("yaw in 3d world", 0, -180, 180));
+	//gui.add(freezeFloorplane.set("freeze floorplane", false));
+	//gui.add(drawCamera.set("draw camera", true));
+	//gui.add(mapKinectto3DWorld.set("map Kinect to 3d world", true));
+
+	//gui.loadFromFile("_settings/kinectcamera.xml");
 
 	gui.setPosition(10, 470);
 }

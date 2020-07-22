@@ -11,6 +11,9 @@ private:
 	void draw();
 	ofVec4f floorplane;
 
+	ofParameterGroup params;
+	ofParameterGroup getParams() { return params; }
+
 	//GUI
 	ofxPanel gui;
 	ofParameter <float> kinectcamxposin3dworld;

@@ -15,18 +15,30 @@ void ncKinectPCTriangulator::setup(vector<ncKinectUser*> &_users, ncKinectv2Core
 	cam.setDistance(5);
 	cam.setNearClip(0.01);
 
-	gui.setup("Mesh Triangulator"+ofToString(_id), "_settings/triangulator"+ofToString(_id)+".xml");
-	gui.add(bDrawGrid.set("draw grid", true));
-	gui.add(bRotate.set("rotate", true));
-	gui.add(bClampPosition.set("clamp position", true));
-	gui.add(colorblend.set("color blend", 0.5,0,1));
-	gui.add(bDoPointCloud.set("point cloud", false));
-	gui.add(pointSize.set("point size",1,1,10));
-	gui.add(bDrawContours.set("draw debug contours", true));
+
+	//gui.setup("Mesh Triangulator"+ofToString(_id), "_settings/triangulator"+ofToString(_id)+".xml");
+	//gui.add(bDrawGrid.set("draw grid", false));
+	//gui.add(bRotate.set("rotate", false));
+	//gui.add(bClampPosition.set("clamp position", true));
+	//gui.add(colorblend.set("color blend", 0.5,0,1));
+	//gui.add(bDoPointCloud.set("point cloud", false));
+	//gui.add(pointSize.set("point size",1,1,10));
+	//gui.add(bDrawContours.set("draw debug contours", false));
+
+	gui.setup();
+	params.setName("Mesh Triangulator");
+	params.add(bDrawGrid.set("draw grid", false));
+	params.add(bRotate.set("rotate", false));
+	params.add(bClampPosition.set("clamp position", true));
+	params.add(colorblend.set("color blend", 0.5, 0, 1));
+	params.add(bDoPointCloud.set("point cloud", false));
+	params.add(pointSize.set("point size", 1, 1, 10));
+	params.add(bDrawContours.set("draw debug contours", false));
+	gui.add(params);
 
 	gui.setPosition(250, 10);
 
-	gui.loadFromFile("_settings/triangulator"+ofToString(id)+".xml");
+	//gui.loadFromFile("_settings/triangulator"+ofToString(id)+".xml");
 	
 	//MESH STUFF
 	sampleSize = 2;
@@ -162,7 +174,10 @@ void ncKinectPCTriangulator::draw() {
 	}
 	else {
 		//usermesh.draw();
+		ofPushStyle();
+		ofSetLineWidth(pointSize.get());
 		usermesh.drawWireframe();
+		ofPopStyle();
 	}
 	kinectcamera->end();
 
