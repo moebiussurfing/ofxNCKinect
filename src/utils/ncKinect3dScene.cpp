@@ -11,7 +11,7 @@ ncKinect3dScene::ncKinect3dScene() {
 
 void ncKinect3dScene::setupGUI() {
 	gui.setup("3d scene", "_settings/kinect3dscene.xml");
-	gui.add(bDrawGrid.set("draw grid", true));
+	gui.add(bDrawGrid.set("draw grid", false));
 	gui.add(bDrawFullPointCloud.set("draw pointcloud", true));
 	gui.add(bDrawUsersPointCloud.set("draw users pointcloud", true));
 	gui.add(bDrawSkeletons.set("draw users skeletons", true));

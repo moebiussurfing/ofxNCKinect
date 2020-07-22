@@ -14,7 +14,7 @@ void ncKinectPCTriangulator::setup(vector<ncKinectUser*> &_users, ncKinectv2Core
 
 	cam.setDistance(5);
 	cam.setNearClip(0.01);
-
+	ofxLoadCamera(cam, "ofEasyCamSettings");
 
 	//gui.setup("Mesh Triangulator"+ofToString(_id), "_settings/triangulator"+ofToString(_id)+".xml");
 	//gui.add(bDrawGrid.set("draw grid", false));
@@ -30,9 +30,10 @@ void ncKinectPCTriangulator::setup(vector<ncKinectUser*> &_users, ncKinectv2Core
 	params.add(bDrawGrid.set("draw grid", false));
 	params.add(bRotate.set("rotate", false));
 	params.add(bClampPosition.set("clamp position", true));
+	params.add(colorColorBlend.set("color", ofColor(255,255), ofColor(0,0), ofColor(255,255)));
 	params.add(colorblend.set("color blend", 0.5, 0, 1));
 	params.add(bDoPointCloud.set("point cloud", false));
-	params.add(pointSize.set("point size", 1, 1, 10));
+	params.add(pointSize.set("point size", 1, 0.1, 10));
 	params.add(bDrawContours.set("draw debug contours", false));
 	gui.add(params);
 
@@ -105,7 +106,8 @@ void ncKinectPCTriangulator::update() {
 				if ((0 <= colorX) && (colorX < 1920) && (0 <= colorY) && (colorY < 1080)) {
 					col = core->getColorPixels().getColor(colorX, colorY);
 					ofColor bcolor(ofColor::blueSteel);
-					col.lerp(bcolor, colorblend);
+					//col.lerp(bcolor, colorblend);
+					col.lerp(colorColorBlend.get(), colorblend);
 					colors[vIndex] = col;
 				}
 

@@ -8,11 +8,14 @@
 #include "ncKinect2dScene.h"
 #include "ncKinectEventDispatcher.h"
 #include "ofxMeshUtils.h"
-
+#include "ofxCameraSaveLoad.h"
 
 class ncKinectPCTriangulator :ofThread {
 
 public:
+	~ncKinectPCTriangulator() { ofxSaveCamera(cam, "ofEasyCamSettings"); };
+	//ncKinectPCTriangulator();
+
 	void setup(vector<ncKinectUser*> &_users, ncKinectv2Core &_core,nCKinectCamera &_camera, ofPixels &_usermap, ofMesh & _pointcloud, int _id);
 	int id;
 	void update();
@@ -46,6 +49,7 @@ private:
 	ofParameter <float> pointSize;
 	ofParameter <bool> bDrawContours;
 	ofParameter <float> colorblend;
+	ofParameter <ofColor> colorColorBlend;
 
 	void drawGridOneColor(float stepSize, size_t numberOfSteps, bool labels, bool x = true, bool y = true, bool z = true);
 	

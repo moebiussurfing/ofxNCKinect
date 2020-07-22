@@ -76,7 +76,8 @@ ofxInfiniteCanvas::ofxInfiniteCanvas(){
     protectedParameters.add(parameters);
     cam.enableOrtho();
     bUseOfCam = true;
-    
+
+	load("camSettings.xml");
 }
 //----------------------------------------
 void ofxInfiniteCanvas::toggleOfCam(){
@@ -102,6 +103,8 @@ bool ofxInfiniteCanvas::load(string path){
 //----------------------------------------
 ofxInfiniteCanvas::~ofxInfiniteCanvas(){
     disableMouseInput();
+
+	save("camSettings.xml");
 }
 //----------------------------------------
 void ofxInfiniteCanvas::setOverrideMouse(bool b){

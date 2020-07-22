@@ -9,7 +9,7 @@ void nCKinectCamera::setupGUI() {
 	params.add(kinectcamzposin3dworld.set("z pos in 3d world", 0, -5, 5));
 	params.add(kinectyawin3dworld.set("yaw in 3d world", 0, -180, 180));
 	params.add(freezeFloorplane.set("freeze floorplane", false));
-	params.add(drawCamera.set("draw camera", true));
+	params.add(drawCamera.set("draw camera", false));
 	params.add(mapKinectto3DWorld.set("map Kinect to 3d world", true));
 	gui.add(params);
 
